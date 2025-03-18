@@ -2506,5 +2506,1069 @@
         "priority": "High"
       }
     ]
+  },
+  {
+    "timestamp": "2025-03-18T17:59:39.348941",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T17:59:40.274105",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:04:40.397575",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:04:41.313524",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:09:41.444845",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:09:42.355693",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:14:42.484741",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:14:43.400229",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:19:43.525407",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:19:44.440188",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:24:44.565163",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:24:45.484331",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:29:45.603006",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:29:46.530683",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:34:46.641672",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:34:47.578856",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:39:47.678228",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:39:48.626988",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:44:48.718003",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:44:49.672298",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:49:49.760573",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:49:50.721007",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:54:50.805160",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:54:51.766501",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:59:51.856068",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T18:59:52.808113",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T19:04:52.904763",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-03-18T19:04:53.856711",
+    "risk_score": 0.1,
+    "severity": "LOW",
+    "details": {
+      "suspicious_processes": [],
+      "open_ports": [
+        {
+          "port": 3306,
+          "address": "0.0.0.0:3306",
+          "status": "LISTEN",
+          "risk": "High risk port exposed"
+        }
+      ],
+      "failed_digital_signatures": [],
+      "unknown_startup_items": [],
+      "nmap_vulnerabilities": [],
+      "event_log_flags": {
+        "windows": [],
+        "linux": []
+      }
+    },
+    "system_info": {
+      "platform": "Linux",
+      "platform_release": "6.13.7-arch1-1",
+      "platform_version": "#1 SMP PREEMPT_DYNAMIC Thu, 13 Mar 2025 18:12:00 +0000",
+      "architecture": "x86_64",
+      "processor": "",
+      "hostname": "archbtw"
+    },
+    "recommendations": [
+      {
+        "category": "Network Security",
+        "suggestion": "Review and secure exposed network ports",
+        "priority": "High"
+      }
+    ]
   }
 ]
