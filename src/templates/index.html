@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - E-Commerce Store{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Our Store</h1>
+    <p class="lead">Discover amazing products at unbeatable prices.</p>
+    <hr class="my-4">
+    <p>Browse our collection of premium products or login to access exclusive deals.</p>
+    <a class="btn btn-primary btn-lg" href="/products" role="button">View Products</a>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Premium Products</h5>
+                <p class="card-text">Explore our collection of high-quality products.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Exclusive Deals</h5>
+                <p class="card-text">Get access to member-only special offers.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Secure Shopping</h5>
+                <p class="card-text">Shop with confidence using our secure platform.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

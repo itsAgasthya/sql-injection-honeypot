@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Products - E-Commerce Store{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <h2>Our Products</h2>
+    </div>
+    <div class="col-auto">
+        <div class="input-group">
+            <input type="text" class="form-control" id="categorySearch" placeholder="Search by category...">
+            <button class="btn btn-primary" onclick="searchProducts()">Search</button>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="productsList">
+    <!-- Products will be loaded here dynamically -->
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function loadProducts(category = '') {
+    try {
+        const response = await fetch(`/api/products?category=${encodeURIComponent(category)}`);
+        const products = await response.json();
+        
+        const productsList = document.getElementById('productsList');
+        productsList.innerHTML = '';
+        
+        if (products.length === 0) {
+            productsList.innerHTML = '<div class="col-12"><div class="alert alert-info">No products found.</div></div>';
+            return;
+        }
+        
+        products.forEach(product => {
+            const productCard = `
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="card-text">${product.description}</p>
+                            <p class="card-text"><strong>Price: $${product.price}</strong></p>
+                            <p class="card-text"><small class="text-muted">Category: ${product.category}</small></p>
+                            <button class="btn btn-primary" onclick="addToCart(${product.id})">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            productsList.innerHTML += productCard;
+        });
+        
+    } catch (error) {
+        console.error('Error loading products:', error);
+        const productsList = document.getElementById('productsList');
+        productsList.innerHTML = '<div class="col-12"><div class="alert alert-danger">Error loading products.</div></div>';
+    }
+}
+
+function searchProducts() {
+    const category = document.getElementById('categorySearch').value;
+    loadProducts(category);
+}
+
+function addToCart(productId) {
+    alert('Please log in to add items to your cart.');
+    window.location.href = '/login';
+}
+
+// Load all products when page loads
+loadProducts();
+
+// Add enter key support for search
+document.getElementById('categorySearch').addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        searchProducts();
+    }
+});
+</script>
+{% endblock %} 

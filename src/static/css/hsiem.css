@@ -1,0 +1,48 @@
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.severity-critical {
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+.severity-high {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+.severity-medium {
+    background-color: rgba(23, 162, 184, 0.1);
+}
+
+.severity-low {
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+.badge {
+    font-size: 0.9em;
+    padding: 0.5em 0.7em;
+}
+
+.bg-critical {
+    background-color: #dc3545;
+}
+
+.bg-high {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.bg-medium {
+    background-color: #17a2b8;
+}
+
+.bg-low {
+    background-color: #28a745;
+}
+
+#event-details {
+    max-height: 500px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+} 
