@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="500" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#212529">
+        SQL Injection Attack Detection Flow
+    </text>
+    
+    <!-- Flow Diagram -->
+    <g transform="translate(100, 100)">
+        <!-- Input -->
+        <rect width="200" height="60" fill="#007bff" opacity="0.2" rx="5"/>
+        <text x="100" y="35" text-anchor="middle" font-size="14" fill="#212529">SQL Query Input</text>
+        
+        <!-- Pattern Analysis -->
+        <rect y="100" width="200" height="60" fill="#28a745" opacity="0.2" rx="5"/>
+        <text x="100" y="135" text-anchor="middle" font-size="14" fill="#212529">Pattern Analysis</text>
+        
+        <!-- ML Analysis -->
+        <rect x="300" y="100" width="200" height="60" fill="#6f42c1" opacity="0.2" rx="5"/>
+        <text x="400" y="135" text-anchor="middle" font-size="14" fill="#212529">ML Analysis</text>
+        
+        <!-- Risk Calculation -->
+        <rect y="200" width="200" height="60" fill="#ffc107" opacity="0.2" rx="5"/>
+        <text x="100" y="235" text-anchor="middle" font-size="14" fill="#212529">Risk Calculation</text>
+        
+        <!-- Response -->
+        <rect x="300" y="200" width="200" height="60" fill="#dc3545" opacity="0.2" rx="5"/>
+        <text x="400" y="235" text-anchor="middle" font-size="14" fill="#212529">Response Generation</text>
+        
+        <!-- Logging -->
+        <rect y="300" width="200" height="60" fill="#17a2b8" opacity="0.2" rx="5"/>
+        <text x="100" y="335" text-anchor="middle" font-size="14" fill="#212529">Logging & HSIEM</text>
+        
+        <!-- Dashboard -->
+        <rect x="300" y="300" width="200" height="60" fill="#fd7e14" opacity="0.2" rx="5"/>
+        <text x="400" y="335" text-anchor="middle" font-size="14" fill="#212529">Dashboard Update</text>
+        
+        <!-- Arrows -->
+        <path d="M100,60 L100,100" stroke="#212529" stroke-width="2" fill="none"/>
+        <path d="M100,160 L100,200" stroke="#212529" stroke-width="2" fill="none"/>
+        <path d="M100,260 L100,300" stroke="#212529" stroke-width="2" fill="none"/>
+        <path d="M400,160 L400,200" stroke="#212529" stroke-width="2" fill="none"/>
+        <path d="M400,260 L400,300" stroke="#212529" stroke-width="2" fill="none"/>
+        <path d="M300,130 L400,130" stroke="#212529" stroke-width="2" fill="none"/>
+        <path d="M300,230 L400,230" stroke="#212529" stroke-width="2" fill="none"/>
+        <path d="M300,330 L400,330" stroke="#212529" stroke-width="2" fill="none"/>
+    </g>
+    
+    <!-- Legend -->
+    <g transform="translate(100, 400)">
+        <text x="0" y="0" font-size="14" font-weight="bold" fill="#212529">Components:</text>
+        <text x="0" y="25" font-size="12" fill="#212529">• Pattern Analysis: SQL injection signatures, attack patterns</text>
+        <text x="0" y="45" font-size="12" fill="#212529">• ML Analysis: Feature extraction, anomaly detection</text>
+        <text x="0" y="65" font-size="12" fill="#212529">• Risk Calculation: Combined scoring, severity assessment</text>
+        <text x="0" y="85" font-size="12" fill="#212529">• Response: Blocking, logging, alerting</text>
+    </g>
+</svg> 

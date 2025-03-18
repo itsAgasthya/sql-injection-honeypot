@@ -128,6 +128,22 @@ function updateSystemStatus(data) {
     statusDiv.innerHTML = html;
 }
 
+// Helper function to get Bootstrap severity class
+function getSeverityClass(severity) {
+    switch (severity.toLowerCase()) {
+        case 'critical':
+            return 'danger';
+        case 'high':
+            return 'warning';
+        case 'medium':
+            return 'info';
+        case 'low':
+            return 'success';
+        default:
+            return 'secondary';
+    }
+}
+
 // Update vulnerability assessment panel
 function updateVulnerabilityAssessment(data) {
     const assessmentDiv = document.getElementById('vulnerability-assessment');
@@ -176,22 +192,6 @@ function updateVulnerabilityAssessment(data) {
     html += `<div class="text-muted mt-2">Last updated: ${new Date(data.timestamp).toLocaleString()}</div>`;
     
     assessmentDiv.innerHTML = html;
-}
-
-// Helper function to get Bootstrap severity class
-function getSeverityClass(severity) {
-    switch (severity.toLowerCase()) {
-        case 'critical':
-            return 'danger';
-        case 'high':
-            return 'warning';
-        case 'medium':
-            return 'info';
-        case 'low':
-            return 'success';
-        default:
-            return 'secondary';
-    }
 }
 
 // Auto-refresh data every 30 seconds

@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import io
 import time
 import threading
+import tempfile
 
 # Configure logging
 logging.basicConfig(
@@ -125,14 +126,23 @@ class SQLInjectionHoneypot:
         if isinstance(input_data, (dict, list)):
             input_data = json.dumps(input_data)
         
-        # Pattern weights based on complexity and potential impact
+        # Pattern weights based on severity levels
         pattern_weights = {
-            r'(\bUNION\b.*\bSELECT\b)': 0.3,  # UNION-based injection
-            r'(\bINFORMATION_SCHEMA\b)': 0.4,  # Information schema access
-            r'(\bDROP\b.*\bTABLE\b|\bDELETE\b.*\bFROM\b)': 0.35,  # Destructive operations
-            r'(\bINSERT\b.*\bINTO\b|\bUPDATE\b.*\bSET\b)': 0.3,  # Data modification
-            r'(\bOR\b.*\b1\b.*=.*\b1\b|\bAND\b.*\b1\b.*=.*\b1\b)': 0.2,  # Basic boolean-based
-            r'(-{2}|\/\*|\*\/|#)': 0.15  # Basic comment injection
+            # CRITICAL (0.7-1.0) - Schema enumeration, destructive operations
+            r'(\bINFORMATION_SCHEMA\b)': 0.7,  # Information schema access
+            r'(\bDROP\b.*\bTABLE\b|\bDELETE\b.*\bFROM\b)': 0.7,  # Destructive operations
+            
+            # HIGH (0.5-0.7) - Data extraction attempts
+            r'(\bUNION\b.*\bSELECT\b)': 0.5,  # UNION-based injection
+            r'(\bINSERT\b.*\bINTO\b|\bUPDATE\b.*\bSET\b)': 0.5,  # Data modification
+            
+            # MEDIUM (0.3-0.5) - Authentication bypass attempts
+            r'(\bOR\b.*\b1\b.*=.*\b1\b|\bAND\b.*\b1\b.*=.*\b1\b)': 0.4,  # Boolean-based
+            r'(\bADMIN\b.*\bOR\b)': 0.4,  # Admin bypass attempts
+            
+            # LOW (0.0-0.3) - Basic patterns
+            r'(-{2}|\/\*|\*\/|#)': 0.2,  # Comment injection
+            r'(\bLIKE\b.*%)': 0.2  # Basic LIKE injection
         }
         
         # Calculate base risk score from patterns
@@ -145,18 +155,20 @@ class SQLInjectionHoneypot:
         
         # Add complexity bonus for multiple patterns
         if len(matched_patterns) > 1:
-            risk_score += 0.1 * (len(matched_patterns) - 1)
+            # Add 0.1 for each additional pattern, but don't exceed 1.0
+            risk_score = min(1.0, risk_score + (0.1 * (len(matched_patterns) - 1)))
         
         # Use ML model for additional detection
         ml_score = self.classifier.predict_risk(input_data)
         
-        # Combine pattern-based and ML scores with weighted average
+        # Combine pattern-based and ML scores
+        # Higher weight (0.7) to pattern matching as it's more reliable
         final_score = (0.7 * risk_score) + (0.3 * float(ml_score))
         
         # Normalize final score to 0-1 range
         final_score = min(1.0, max(0.0, final_score))
         
-        return final_score > 0.3, final_score
+        return final_score > 0.2, final_score  # Lower threshold to catch more potential attacks
         
     def log_attack(self, request_obj, attack_type, risk_score):
         """Log detected attacks"""
@@ -316,13 +328,13 @@ class SQLInjectionHoneypot:
                 """)
                 events = [dict(row) for row in conn.execute(events_query)]
                 
-                # Get statistics
+                # Get statistics with updated severity ranges
                 stats_query = text("""
                     SELECT 
-                        SUM(CASE WHEN risk_score >= 0.8 THEN 1 ELSE 0 END) as critical,
-                        SUM(CASE WHEN risk_score >= 0.6 AND risk_score < 0.8 THEN 1 ELSE 0 END) as high,
-                        SUM(CASE WHEN risk_score >= 0.4 AND risk_score < 0.6 THEN 1 ELSE 0 END) as medium,
-                        SUM(CASE WHEN risk_score < 0.4 THEN 1 ELSE 0 END) as low
+                        SUM(CASE WHEN risk_score >= 0.7 THEN 1 ELSE 0 END) as critical,
+                        SUM(CASE WHEN risk_score >= 0.5 AND risk_score < 0.7 THEN 1 ELSE 0 END) as high,
+                        SUM(CASE WHEN risk_score >= 0.3 AND risk_score < 0.5 THEN 1 ELSE 0 END) as medium,
+                        SUM(CASE WHEN risk_score < 0.3 THEN 1 ELSE 0 END) as low
                     FROM attack_logs
                     WHERE timestamp >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
                 """)
@@ -350,13 +362,13 @@ class SQLInjectionHoneypot:
                 """)
                 events = [dict(row) for row in conn.execute(events_query)]
                 
-                # Get statistics
+                # Get statistics with updated severity ranges
                 stats_query = text("""
                     SELECT 
-                        SUM(CASE WHEN risk_score >= 0.8 THEN 1 ELSE 0 END) as critical,
-                        SUM(CASE WHEN risk_score >= 0.6 AND risk_score < 0.8 THEN 1 ELSE 0 END) as high,
-                        SUM(CASE WHEN risk_score >= 0.4 AND risk_score < 0.6 THEN 1 ELSE 0 END) as medium,
-                        SUM(CASE WHEN risk_score < 0.4 THEN 1 ELSE 0 END) as low
+                        SUM(CASE WHEN risk_score >= 0.7 THEN 1 ELSE 0 END) as critical,
+                        SUM(CASE WHEN risk_score >= 0.5 AND risk_score < 0.7 THEN 1 ELSE 0 END) as high,
+                        SUM(CASE WHEN risk_score >= 0.3 AND risk_score < 0.5 THEN 1 ELSE 0 END) as medium,
+                        SUM(CASE WHEN risk_score < 0.3 THEN 1 ELSE 0 END) as low
                     FROM attack_logs
                     WHERE timestamp >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
                 """)
@@ -394,15 +406,15 @@ class SQLInjectionHoneypot:
             return jsonify({'error': str(e)}), 500
 
     def _calculate_severity(self, risk_score):
-        """Calculate severity level based on risk score"""
-        if risk_score >= 0.8:
-            return 'CRITICAL'
-        elif risk_score >= 0.6:
-            return 'HIGH'
-        elif risk_score >= 0.4:
-            return 'MEDIUM'
+        """Calculate severity level based on standardized risk score ranges"""
+        if risk_score >= 0.7:
+            return 'CRITICAL'  # Schema enumeration, destructive attempts
+        elif risk_score >= 0.5:
+            return 'HIGH'      # Data extraction attempts
+        elif risk_score >= 0.3:
+            return 'MEDIUM'    # Authentication bypass attempts
         else:
-            return 'LOW'
+            return 'LOW'       # Basic patterns, no data extraction
     
     def start_monitoring(self):
         """Start system monitoring thread"""
@@ -536,24 +548,32 @@ class SQLInjectionHoneypot:
             # Rotate x-axis labels for better readability
             plt.xticks(rotation=45)
             
-            # Add severity level bands
-            plt.axhspan(0, 0.4, alpha=0.2, color='green', label='LOW')
-            plt.axhspan(0.4, 0.6, alpha=0.2, color='yellow', label='MEDIUM')
-            plt.axhspan(0.6, 0.8, alpha=0.2, color='orange', label='HIGH')
-            plt.axhspan(0.8, 1.0, alpha=0.2, color='red', label='CRITICAL')
+            # Add severity level bands with updated ranges
+            plt.axhspan(0.0, 0.3, alpha=0.2, color='green', label='LOW - Basic Patterns')
+            plt.axhspan(0.3, 0.5, alpha=0.2, color='yellow', label='MEDIUM - Auth Bypass')
+            plt.axhspan(0.5, 0.7, alpha=0.2, color='orange', label='HIGH - Data Extraction')
+            plt.axhspan(0.7, 1.0, alpha=0.2, color='red', label='CRITICAL - Schema/Destructive')
             
-            plt.legend()
+            # Add legend
+            plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
             
-            # Adjust layout to prevent label cutoff
-            plt.tight_layout()
-            
-            # Save to bytes
-            img = io.BytesIO()
-            plt.savefig(img, format='png')
-            img.seek(0)
+            # Save plot to temporary file
+            temp_file = tempfile.NamedTemporaryFile(suffix='.png', delete=False)
+            plt.savefig(temp_file.name, bbox_inches='tight')
             plt.close()
             
-            return send_file(img, mimetype='image/png')
+            # Read the image file
+            with open(temp_file.name, 'rb') as f:
+                img_data = f.read()
+            
+            # Clean up temporary file
+            os.unlink(temp_file.name)
+            
+            # Return image data
+            return send_file(
+                io.BytesIO(img_data),
+                mimetype='image/png'
+            )
             
         except Exception as e:
             logger.error(f"Error generating risk trend: {str(e)}", exc_info=True)

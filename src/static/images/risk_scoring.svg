@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="400" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#212529">
+        SQL Injection Risk Scoring System
+    </text>
+    
+    <!-- Risk Score Bar -->
+    <rect x="100" y="100" width="600" height="40" fill="#e9ecef" rx="5"/>
+    
+    <!-- Severity Bands -->
+    <rect x="100" y="100" width="180" height="40" fill="#28a745" opacity="0.3"/>
+    <rect x="280" y="100" width="120" height="40" fill="#ffc107" opacity="0.3"/>
+    <rect x="400" y="100" width="120" height="40" fill="#fd7e14" opacity="0.3"/>
+    <rect x="520" y="100" width="180" height="40" fill="#dc3545" opacity="0.3"/>
+    
+    <!-- Severity Labels -->
+    <text x="190" y="125" text-anchor="middle" font-size="14" fill="#212529">LOW (0.0-0.3)</text>
+    <text x="340" y="125" text-anchor="middle" font-size="14" fill="#212529">MEDIUM (0.3-0.5)</text>
+    <text x="460" y="125" text-anchor="middle" font-size="14" fill="#212529">HIGH (0.5-0.7)</text>
+    <text x="610" y="125" text-anchor="middle" font-size="14" fill="#212529">CRITICAL (0.7-1.0)</text>
+    
+    <!-- Components -->
+    <g transform="translate(100, 200)">
+        <!-- Pattern-based Score -->
+        <rect width="180" height="40" fill="#007bff" opacity="0.2" rx="5"/>
+        <text x="90" y="25" text-anchor="middle" font-size="14" fill="#212529">Pattern-based (70%)</text>
+        
+        <!-- ML Score -->
+        <rect x="200" width="180" height="40" fill="#6f42c1" opacity="0.2" rx="5"/>
+        <text x="290" y="25" text-anchor="middle" font-size="14" fill="#212529">ML-based (30%)</text>
+    </g>
+    
+    <!-- Legend -->
+    <g transform="translate(100, 300)">
+        <text x="0" y="0" font-size="14" font-weight="bold" fill="#212529">Components:</text>
+        <text x="0" y="25" font-size="12" fill="#212529">• Pattern Matching: SQL keywords, attack signatures</text>
+        <text x="0" y="45" font-size="12" fill="#212529">• Machine Learning: Feature analysis, context awareness</text>
+        <text x="0" y="65" font-size="12" fill="#212529">• Multiple Pattern Bonus: +0.1 per additional pattern</text>
+    </g>
+</svg> 

