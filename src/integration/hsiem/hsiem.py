@@ -76,12 +76,20 @@ class HSIEMIntegration:
             return False
             
     def _calculate_severity(self, risk_score: float) -> str:
-        """Calculate severity level based on risk score"""
-        if risk_score >= 0.8:
+        """
+        Calculate severity level based on standardized risk score ranges
+        
+        Risk Score Ranges:
+        - CRITICAL (0.7-1.0): Schema enumeration, destructive attempts
+        - HIGH (0.5-0.7): Data extraction attempts
+        - MEDIUM (0.3-0.5): Authentication bypass attempts
+        - LOW (0.0-0.3): Basic patterns, no data extraction
+        """
+        if risk_score >= 0.7:
             return 'CRITICAL'
-        elif risk_score >= 0.6:
+        elif risk_score >= 0.5:
             return 'HIGH'
-        elif risk_score >= 0.4:
+        elif risk_score >= 0.3:
             return 'MEDIUM'
         else:
             return 'LOW' 
